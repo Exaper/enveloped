@@ -1,8 +1,8 @@
 package com.enveloped;
 
 public class Engine {
-    private final int mGames;
-    private final Player[] mPlayers;
+    private final double mGames;
+    private final Stat[] mStats;
 
 //    public static interface Callback{
 //        public void onGameStarted(Engine who);
@@ -10,9 +10,13 @@ public class Engine {
 //    }
 
 
-    public Engine(int gamesCount, Player[] players) {
+    public Engine(double gamesCount, Player[] players) {
         mGames = gamesCount;
-        mPlayers = players;
+        mStats = new Stat[players.length];
+        for (int i = 0; i < players.length; i++) {
+            mStats[i] = new Stat(players[i]);
+        }
+
     }
 
     public void play() {
@@ -20,22 +24,32 @@ public class Engine {
     }
 
     private static final class Stat {
-        private final Player player;
-        private int gamesPlayed;
-        private int wins;
+        private final Player mPlayer;
+        private double mGamesPlayed;
+        private double mWins;
 
         public Stat(Player p) {
-            this.player = p;
+            this.mPlayer = p;
         }
 
         public void registerGamePlayed(boolean won) {
-            gamesPlayed++;
+            mGamesPlayed++;
             if (won) {
-                wins++;
+                mWins++;
             }
         }
 
+        public Player getPlayer() {
+            return mPlayer;
+        }
 
+        public double getGamesPlayed() {
+            return mGamesPlayed;
+        }
+
+        public double getWins() {
+            return mWins;
+        }
     }
 
 }
