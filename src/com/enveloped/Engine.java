@@ -21,9 +21,9 @@ public class Engine {
     public void play() {
         System.out.println("Starting the game...");
         for (double gameNumber = 0; gameNumber < mGames; gameNumber++) {
-            double x1 = mRandom.nextDouble();
-            double x2 = mRandom.nextDouble();
-            System.out.println("X1 = " + x1 + "\nX2=" + x2);
+            double x1 = mRandom.nextDouble() * mRandom.nextInt(Integer.MAX_VALUE);
+            double x2 = mRandom.nextDouble() * mRandom.nextInt(Integer.MAX_VALUE);
+            System.out.println("X1=" + x1 + "\nX2=" + x2);
             for (Stat stat : mStats) {
                 Player targetPlayer = stat.getPlayer();
                 System.out.println("Playing with Player " + targetPlayer.getName());

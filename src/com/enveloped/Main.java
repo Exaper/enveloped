@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Player[] players = new Player[]{new KoopaTroopa()};
 
-        Engine e = new Engine(100, players);
+        Engine e = new Engine(10000, players);
+        e.play();
     }
 }
