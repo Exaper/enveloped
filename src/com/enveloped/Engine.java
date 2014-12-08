@@ -1,5 +1,7 @@
 package com.enveloped;
 
+import com.enveloped.data.Envelope;
+import com.enveloped.data.SecureEnvelope;
 import com.enveloped.player.Player;
 
 import java.util.Random;
@@ -28,7 +30,7 @@ public class Engine {
                 Player targetPlayer = stat.getPlayer();
                 System.out.println("Playing with Player " + targetPlayer.getName());
                 // TODO x1 should NEVER be == x2
-                boolean playerAcceptedNumber = targetPlayer.acceptNumber(x1);
+                boolean playerAcceptedNumber = targetPlayer.willAcceptFirstEnvelope(new Envelope(x1), new SecureEnvelope(x2));
                 System.out.println("Player " + (playerAcceptedNumber ? "accepted" : "rejected") + " the first number");
                 boolean won = (playerAcceptedNumber && x1 > x2) || (!playerAcceptedNumber && x2 > x1);
                 System.out.println("Player " + (won ? "wins" : "loses"));

@@ -1,6 +1,7 @@
 package com.enveloped.player;
 
 import com.enveloped.TrueRandom;
+import com.enveloped.data.Envelope;
 
 public class KoopaTroopa extends Player {
     private final TrueRandom mRandom;
@@ -10,7 +11,7 @@ public class KoopaTroopa extends Player {
     }
 
     @Override
-    public boolean acceptNumber(double x) {
+    public boolean willAcceptFirstEnvelope(Envelope e1, Envelope e2) {
         boolean numberAccepted;
         double p1 = mRandom.nextTrueDouble();
         double p2 = mRandom.nextTrueDouble();
@@ -19,7 +20,7 @@ public class KoopaTroopa extends Player {
             p2 = p1;
             p1 = tmp;
         }
-
+        double x = e1.getNumber();
         if (x < p1) {
             numberAccepted = false;
         } else if (x > p2) {
