@@ -25,7 +25,7 @@ public class Engine {
         for (double gameNumber = 0; gameNumber < mGames; gameNumber++) {
             double x1 = mRandom.nextTrueDouble();
             double x2 = mRandom.nextTrueDouble();
-            System.out.println("X1=" + x1 + "\nX2=" + x2);
+            System.out.println("X1 = " + x1 + "\nX2 = " + x2);
             for (Stat stat : mStats) {
                 Player targetPlayer = stat.getPlayer();
                 System.out.println("Playing with Player " + targetPlayer.getName());
