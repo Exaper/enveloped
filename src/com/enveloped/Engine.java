@@ -7,7 +7,7 @@ import java.util.Random;
 public class Engine {
     private final double mGames;
     private final Stat[] mStats;
-    private final Random mRandom;
+    private final TrueRandom mRandom;
 
     public Engine(double gamesCount, Player[] players) {
         mGames = gamesCount;
@@ -15,14 +15,14 @@ public class Engine {
         for (int i = 0; i < players.length; i++) {
             mStats[i] = new Stat(players[i]);
         }
-        mRandom = new Random(System.currentTimeMillis());
+        mRandom = new TrueRandom();
     }
 
     public void play() {
         System.out.println("Starting the game...");
         for (double gameNumber = 0; gameNumber < mGames; gameNumber++) {
-            double x1 = mRandom.nextDouble() * mRandom.nextInt(Integer.MAX_VALUE);
-            double x2 = mRandom.nextDouble() * mRandom.nextInt(Integer.MAX_VALUE);
+            double x1 = mRandom.nextTrueDouble();
+            double x2 = mRandom.nextTrueDouble();
             System.out.println("X1=" + x1 + "\nX2=" + x2);
             for (Stat stat : mStats) {
                 Player targetPlayer = stat.getPlayer();
